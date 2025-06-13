@@ -20,6 +20,9 @@ class MyApp extends StatelessWidget {
         primaryColor: primaryColor,
         scaffoldBackgroundColor: bgColor,
         canvasColor: bgColor,
+        textTheme: ThemeData.light()
+            .textTheme
+            .apply(bodyColor: bodyTextColor, displayColor: bodyTextColor),
       ),
       home: HomeScreen(),
     );

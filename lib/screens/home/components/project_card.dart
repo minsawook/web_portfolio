@@ -39,7 +39,7 @@ class ProjectCard extends StatelessWidget {
                 project.description!,
                 maxLines: Responsive.isMobileLarge(context) ? 5 : 6,
                 overflow: TextOverflow.ellipsis,
-                style: TextStyle(height: 1.5, color: Colors.black87),
+                style: TextStyle(height: 1.5, color: bodyTextColor),
               ),
             ),
             // Spacer(),
