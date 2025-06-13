@@ -22,7 +22,6 @@ class SideMenu extends StatelessWidget {
             Flexible(
               fit: FlexFit.loose,
               child: Container(
-                //height: MediaQuery.of(context).size.height * 0.45,
                 child: MyInfo(),
               ),
             ),
@@ -36,6 +35,14 @@ class SideMenu extends StatelessWidget {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+                        _MenuButton(
+                          label: 'About Me',
+                          onTap: () => onMenuTap?.call('aboutMe'),
+                        ),
+                        _MenuButton(
+                          label: 'Skill',
+                          onTap: () => onMenuTap?.call('skill'),
+                        ),
                         _MenuButton(
                           label: 'Career',
                           onTap: () => onMenuTap?.call('career'),

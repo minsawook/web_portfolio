@@ -14,7 +14,7 @@ final List<Recommendation> demo_recommendations = [
     name: "로완",
     source: "",
     text: "의료기기 어플리케이션 개발,",
-    period: "2023-11월 ~ 재직중(1년 6개월)",
+    period: "2023-11월 ~ 재직중",
   ),
 ];
 
