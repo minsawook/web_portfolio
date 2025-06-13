@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_profile/screens/home/components/project_card.dart';
 
 import '../../../constants.dart';
-import '../../../models/Project.dart';
+import '../../../models/Recommendation.dart';
 import 'ProjectsCart.dart';
 
 class Projects extends StatefulWidget {
