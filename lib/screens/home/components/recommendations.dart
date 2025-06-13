@@ -37,24 +37,6 @@ class Recommendations extends StatelessWidget {
               ),
             ),
           )
-          /*  SingleChildScrollView(
-            scrollDirection: Axis.vertical,
-            child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-
-                ]  List.generate(
-                demo_recommendations.length,
-                (index) => Padding(
-                  padding: const EdgeInsets.only(right: defaultPadding),
-                  child: RecommendationCard(
-                    recommendation: demo_recommendations[index],
-                  ),
-                ),
-              ),
-                ),
-          ),*/
         ],
       ),
     );

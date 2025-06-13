@@ -124,6 +124,7 @@ class _PackageInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: double.infinity,
       padding: const EdgeInsets.all(defaultPadding),
       decoration: BoxDecoration(
         color: secondaryColor,
@@ -138,11 +139,14 @@ class _PackageInfo extends StatelessWidget {
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
           SizedBox(height: 8),
-          Text('Frontend: QT, Flutter'),
+          Text('Frontend: Flutter, QT '),
           Text('Database: SQLite, Firebase'),
           Text('Version Control: Git, GitHub'),
           Text(
-            'Packages: GetX, Riverpod, Go Router, Hooks, easy_localization',
+            'Packages: GetX, Riverpod, Go_Router, Hooks, easy_localization, Retrofit 등',
+          ),
+          Text(
+            'Collaboration Tool: Jira, Figma, Notion, Flow',
           ),
         ],
       ),

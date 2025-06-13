@@ -48,9 +48,10 @@ class _HomeScreenState extends State<HomeScreen> {
       children: [
         HomeBanner(),
         AnimatedSection(sectionKey: _aboutMe, child: Container()),
-        AnimatedSection(sectionKey: _skillKey, child: SkillSection(skills: demoSkills)),
+        AnimatedSection(sectionKey: _skillKey, child: SkillSection(skills: skills)),
         AnimatedSection(sectionKey: _careerKey, child: Recommendations()),
-        AnimatedSection(sectionKey: _projectKey, child: Projects(scrollController: _scrollController)),
+        AnimatedSection(
+            sectionKey: _projectKey, child: Projects(scrollController: _scrollController)),
         AnimatedSection(sectionKey: _toyKey, child: MyProjects()),
         AnimatedSection(sectionKey: _postKey, child: MyPost()),
       ],
