@@ -16,7 +16,7 @@ class HomeBanner extends StatelessWidget {
       child: Stack(
         fit: StackFit.expand,
         children: [
-          Container(color: darkColor.withOpacity(0.66)),
+          Container(color: Colors.white.withOpacity(0.66)),
           Row(mainAxisAlignment: MainAxisAlignment.end, children: <Widget>[
             Image.asset(
               "assets/images/human.png",
@@ -34,11 +34,11 @@ class HomeBanner extends StatelessWidget {
                   style: Responsive.isDesktop(context)
                       ? Theme.of(context).textTheme.displaySmall!.copyWith(
                             fontWeight: FontWeight.bold,
-                            color: Colors.white,
+                            color: Colors.black,
                           )
                       : Theme.of(context).textTheme.headlineMedium!.copyWith(
                             fontWeight: FontWeight.bold,
-                            color: Colors.white,
+                            color: Colors.black,
                           ),
                 ),
                 if (Responsive.isMobileLarge(context)) const SizedBox(height: defaultPadding / 2),

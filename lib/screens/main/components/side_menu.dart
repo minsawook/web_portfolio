@@ -65,7 +65,7 @@ class SideMenu extends StatelessWidget {
                     Container(
                       height: MediaQuery.of(context).size.height * 0.07,
                       margin: EdgeInsets.only(top: defaultPadding),
-                      color: Color(0xFF24242E),
+                      color: secondaryColor,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [

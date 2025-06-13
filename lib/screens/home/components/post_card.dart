@@ -41,7 +41,7 @@ class PostCard extends StatelessWidget {
                 parseHtmlString(post.description!),
                 //maxLines: Responsive.isMobileLarge(context) ? 3 : 4,
                 overflow: TextOverflow.ellipsis,
-                style: TextStyle(height: 1.5, color: Colors.white70),
+                style: TextStyle(height: 1.5, color: Colors.black87),
               ),
             ),
             // Spacer(),

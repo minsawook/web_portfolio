@@ -27,7 +27,7 @@ class AnimatedCircularProgressIndicator extends StatelessWidget {
                 CircularProgressIndicator(
                   value: value,
                   color: primaryColor,
-                  backgroundColor: darkColor,
+                  backgroundColor: secondaryColor,
                 ),
                 Center(
                     child: Text(
@@ -74,7 +74,7 @@ class AnimatedLinearProgressIndicator extends StatelessWidget {
               children: [
                 Text(
                   label,
-                  style: TextStyle(color: Colors.white),
+                  style: TextStyle(color: Colors.black),
                 ),
                 Text((value * 100).toInt().toString() + "%"),
               ],
@@ -83,7 +83,7 @@ class AnimatedLinearProgressIndicator extends StatelessWidget {
             LinearProgressIndicator(
               value: value,
               color: primaryColor,
-              backgroundColor: darkColor,
+              backgroundColor: secondaryColor,
             ),
           ],
         ),
