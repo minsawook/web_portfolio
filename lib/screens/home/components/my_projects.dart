@@ -4,7 +4,7 @@ import 'package:flutter_profile/responsive.dart';
 
 import '../../../constants.dart';
 import 'project_card.dart';
-import '../../components/animated_section.dart';
+import '../../../components/animated_section.dart';
 
 class MyProjects extends StatelessWidget {
   const MyProjects({

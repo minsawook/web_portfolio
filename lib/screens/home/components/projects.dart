@@ -8,7 +8,7 @@ import '../../../models/Project.dart';
 import 'ProjectsCart.dart';
 import '../../main/components/skills.dart';
 import '../../main/components/coding.dart';
-import '../../components/animated_section.dart';
+import '../../../components/animated_section.dart';
 
 class Projects extends StatelessWidget {
   const Projects({
