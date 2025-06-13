@@ -79,20 +79,27 @@ class _SkillBar extends StatelessWidget {
                   ),
                 ),
                 Positioned(
-                  left: progressWidth - 8,
                   top: -22,
-                  child: Column(
-                    children: [
-                      Text('${(skill.level * 100).round()}%'),
-                      Container(
-                        width: 16,
-                        height: 16,
-                        decoration: BoxDecoration(
-                          color: color,
-                          shape: BoxShape.circle,
+                  left: progressWidth,
+                  child: FractionalTranslation(
+                    translation: const Offset(-0.5, 0),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          '${(skill.level * 100).round()}%',
+                          textAlign: TextAlign.center,
                         ),
-                      ),
-                    ],
+                        Container(
+                          width: 16,
+                          height: 16,
+                          decoration: BoxDecoration(
+                            color: color,
+                            shape: BoxShape.circle,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ],
