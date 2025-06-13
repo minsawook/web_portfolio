@@ -22,7 +22,11 @@ class ProjectCard extends StatelessWidget {
       },
       child: Container(
         padding: const EdgeInsets.all(defaultPadding),
-        color: secondaryColor,
+        decoration: BoxDecoration(
+          color: secondaryColor,
+          borderRadius: BorderRadius.circular(8),
+          boxShadow: kDefaultCardShadow,
+        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -39,7 +43,7 @@ class ProjectCard extends StatelessWidget {
                 project.description!,
                 maxLines: Responsive.isMobileLarge(context) ? 5 : 6,
                 overflow: TextOverflow.ellipsis,
-                style: TextStyle(height: 1.5, color: Colors.white70),
+                style: TextStyle(height: 1.5, color: bodyTextColor),
               ),
             ),
             // Spacer(),

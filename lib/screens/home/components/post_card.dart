@@ -24,7 +24,11 @@ class PostCard extends StatelessWidget {
       },
       child: Container(
         padding: const EdgeInsets.all(defaultPadding),
-        color: secondaryColor,
+        decoration: BoxDecoration(
+          color: secondaryColor,
+          borderRadius: BorderRadius.circular(8),
+          boxShadow: kDefaultCardShadow,
+        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -41,7 +45,7 @@ class PostCard extends StatelessWidget {
                 parseHtmlString(post.description!),
                 //maxLines: Responsive.isMobileLarge(context) ? 3 : 4,
                 overflow: TextOverflow.ellipsis,
-                style: TextStyle(height: 1.5, color: Colors.white70),
+                style: TextStyle(height: 1.5, color: bodyTextColor),
               ),
             ),
             // Spacer(),

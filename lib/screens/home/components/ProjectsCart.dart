@@ -17,7 +17,11 @@ class ProjectsCard extends StatelessWidget {
     return Container(
       width: double.infinity,
       padding: EdgeInsets.all(defaultPadding),
-      color: secondaryColor,
+      decoration: BoxDecoration(
+        color: secondaryColor,
+        borderRadius: BorderRadius.circular(8),
+        boxShadow: kDefaultCardShadow,
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
