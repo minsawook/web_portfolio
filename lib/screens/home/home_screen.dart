@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_profile/screens/home/components/my_blog.dart';
 import 'package:flutter_profile/screens/home/components/projects.dart';
 import 'package:flutter_profile/screens/main/main_screen.dart';
+import 'components/skill_section.dart';
+import '../../models/skill.dart';
 import '../../components/animated_section.dart';
 import 'components/home_banner.dart';
 import 'components/my_projects.dart';
@@ -25,6 +27,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void _onMenu(String id) {
     final contextMap = {
+      'aboutMe': _aboutMe,
+      'skill': _skillKey,
       'career': _careerKey,
       'projects': _projectKey,
       'toys': _toyKey,
@@ -44,9 +48,9 @@ class _HomeScreenState extends State<HomeScreen> {
       children: [
         HomeBanner(),
         AnimatedSection(sectionKey: _aboutMe, child: Container()),
-        AnimatedSection(sectionKey: _skillKey, child: Container()),
+        AnimatedSection(sectionKey: _skillKey, child: SkillSection(skills: demoSkills)),
         AnimatedSection(sectionKey: _careerKey, child: Recommendations()),
-        AnimatedSection(sectionKey: _projectKey, child: Projects()),
+        AnimatedSection(sectionKey: _projectKey, child: Projects(scrollController: _scrollController)),
         AnimatedSection(sectionKey: _toyKey, child: MyProjects()),
         AnimatedSection(sectionKey: _postKey, child: MyPost()),
       ],

@@ -1,0 +1,110 @@
+import 'dart:math';
+
+import 'package:flutter/material.dart';
+import '../../../constants.dart';
+import '../../../models/skill.dart';
+
+class SkillSection extends StatelessWidget {
+  final List<Skill> skills;
+  const SkillSection({Key? key, required this.skills}) : super(key: key);
+
+  Color _randomColor() {
+    final r = Random();
+    return Colors.primaries[r.nextInt(Colors.primaries.length)];
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: defaultPadding),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text('Skills', style: Theme.of(context).textTheme.headlineSmall),
+          const SizedBox(height: defaultPadding),
+          LayoutBuilder(
+            builder: (context, constraints) {
+              final itemWidth = (constraints.maxWidth - defaultPadding) / 2;
+              return Wrap(
+                spacing: defaultPadding,
+                runSpacing: defaultPadding,
+                children: skills.map((s) {
+                  return SizedBox(
+                    width: itemWidth,
+                    child: _SkillBar(skill: s, color: _randomColor()),
+                  );
+                }).toList(),
+              );
+            },
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _SkillBar extends StatelessWidget {
+  final Skill skill;
+  final Color color;
+  const _SkillBar({required this.skill, required this.color});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(skill.name, style: TextStyle(fontWeight: FontWeight.bold)),
+        const SizedBox(height: 6),
+        LayoutBuilder(
+          builder: (context, constraints) {
+            final barWidth = constraints.maxWidth;
+            final progressWidth = barWidth * skill.level;
+            return Stack(
+              clipBehavior: Clip.none,
+              children: [
+                Container(
+                  width: barWidth,
+                  height: 10,
+                  decoration: BoxDecoration(
+                    color: darkColor,
+                    borderRadius: BorderRadius.circular(5),
+                  ),
+                ),
+                Container(
+                  width: progressWidth,
+                  height: 10,
+                  decoration: BoxDecoration(
+                    color: color,
+                    borderRadius: BorderRadius.circular(5),
+                  ),
+                ),
+                Positioned(
+                  left: progressWidth - 8,
+                  top: -22,
+                  child: Column(
+                    children: [
+                      Text('${(skill.level * 100).round()}%'),
+                      Container(
+                        width: 16,
+                        height: 16,
+                        decoration: BoxDecoration(
+                          color: color,
+                          shape: BoxShape.circle,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            );
+          },
+        ),
+        const SizedBox(height: 6),
+        Text(
+          skill.description,
+          style: Theme.of(context).textTheme.bodySmall,
+        ),
+      ],
+    );
+  }
+}
