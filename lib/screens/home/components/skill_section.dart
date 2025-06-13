@@ -37,6 +37,8 @@ class SkillSection extends StatelessWidget {
               );
             },
           ),
+          const SizedBox(height: defaultPadding),
+          const _PackageInfo(),
         ],
       ),
     );
@@ -112,6 +114,38 @@ class _SkillBar extends StatelessWidget {
           style: Theme.of(context).textTheme.bodySmall,
         ),
       ],
+    );
+  }
+}
+
+class _PackageInfo extends StatelessWidget {
+  const _PackageInfo();
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(defaultPadding),
+      decoration: BoxDecoration(
+        color: secondaryColor,
+        borderRadius: BorderRadius.circular(8),
+        boxShadow: kDefaultCardShadow,
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: const [
+          Text(
+            'Packages & Other Skills',
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
+          SizedBox(height: 8),
+          Text('Frontend: QT, Flutter'),
+          Text('Database: SQLite, Firebase'),
+          Text('Version Control: Git, GitHub'),
+          Text(
+            'Packages: GetX, Riverpod, Go Router, Hooks, easy_localization',
+          ),
+        ],
+      ),
     );
   }
 }
