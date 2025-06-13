@@ -24,14 +24,17 @@ class Recommendations extends StatelessWidget {
           const SizedBox(height: defaultPadding),
           SingleChildScrollView(
             child: Column(
-              children: [
-                RecommendationCard(
-                  recommendation: demo_recommendations[0],
-                ),
-                RecommendationCard(
-                  recommendation: demo_recommendations[1],
-                ),
-              ],
+              children: List.generate(
+                demo_recommendations.length,
+                (index) {
+                  return Padding(
+                    padding: EdgeInsets.only(bottom: 10),
+                    child: RecommendationCard(
+                      recommendation: demo_recommendations[index],
+                    ),
+                  );
+                },
+              ),
             ),
           )
           /*  SingleChildScrollView(

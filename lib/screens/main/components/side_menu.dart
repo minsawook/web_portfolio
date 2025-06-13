@@ -3,15 +3,15 @@ import 'package:flutter_profile/constants.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import 'area_info_text.dart';
-import 'coding.dart';
 import 'my_info.dart';
-import 'skills.dart';
 
 class SideMenu extends StatelessWidget {
   const SideMenu({
     Key? key,
+    this.onMenuTap,
   }) : super(key: key);
+
+  final void Function(String id)? onMenuTap;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,6 @@ class SideMenu extends StatelessWidget {
             Flexible(
               fit: FlexFit.loose,
               child: Container(
-                //height: MediaQuery.of(context).size.height * 0.45,
                 child: MyInfo(),
               ),
             ),
@@ -31,35 +30,37 @@ class SideMenu extends StatelessWidget {
                 padding: EdgeInsets.all(defaultPadding),
                 child: Column(
                   children: [
-                    Container(
-                      height: MediaQuery.of(context).size.height * 0.15,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Expanded(
-                            child: AreaInfoText(
-                              title: "Residence",
-                              text: "Korea",
-                            ),
-                          ),
-                          Expanded(
-                            child: AreaInfoText(
-                              title: "City",
-                              text: "Seoul",
-                            ),
-                          ),
-                          Expanded(
-                            child: AreaInfoText(
-                              title: "Age",
-                              text: age(1998).toString(),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Skills(),
                     SizedBox(height: defaultPadding),
-                    Coding(),
+                    Divider(),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        _MenuButton(
+                          label: 'About Me',
+                          onTap: () => onMenuTap?.call('aboutMe'),
+                        ),
+                        _MenuButton(
+                          label: 'Skill',
+                          onTap: () => onMenuTap?.call('skill'),
+                        ),
+                        _MenuButton(
+                          label: 'Career',
+                          onTap: () => onMenuTap?.call('career'),
+                        ),
+                        _MenuButton(
+                          label: 'Projects',
+                          onTap: () => onMenuTap?.call('projects'),
+                        ),
+                        _MenuButton(
+                          label: 'Toy Projects',
+                          onTap: () => onMenuTap?.call('toys'),
+                        ),
+                        _MenuButton(
+                          label: 'Posts',
+                          onTap: () => onMenuTap?.call('posts'),
+                        ),
+                      ],
+                    ),
                     Divider(),
                     SizedBox(height: defaultPadding / 2),
                     Container(
@@ -103,8 +104,36 @@ class SideMenu extends StatelessWidget {
   goLink(String link) async {
     if (!await launch(link)) throw 'Could not launch $link';
   }
+}
 
-  int age(int year) {
-    return DateTime.now().year - year;
+class _MenuButton extends StatefulWidget {
+  final String label;
+  final VoidCallback? onTap;
+  const _MenuButton({required this.label, this.onTap});
+
+  @override
+  State<_MenuButton> createState() => _MenuButtonState();
+}
+
+class _MenuButtonState extends State<_MenuButton> {
+  bool _hover = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return MouseRegion(
+      onEnter: (_) => setState(() => _hover = true),
+      onExit: (_) => setState(() => _hover = false),
+      child: ListTile(
+        title: Text(
+          widget.label,
+          style: TextStyle(
+            color: _hover ? primaryColor : bodyTextColor,
+            fontWeight: _hover ? FontWeight.bold : FontWeight.normal,
+          ),
+        ),
+        tileColor: _hover ? primaryColor.withOpacity(0.1) : Colors.transparent,
+        onTap: widget.onTap,
+      ),
+    );
   }
 }
