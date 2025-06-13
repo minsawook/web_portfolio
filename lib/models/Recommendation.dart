@@ -6,14 +6,15 @@ class Recommendation {
 
 final List<Recommendation> demo_recommendations = [
   Recommendation(
-      name: "아인(주)",
-      source: "",
-      text: "플러터 앱 및 Qt 프로그램 개발,",
-      period: "2022-02월 ~ 2023-06월(1년 4개월)"),
+    name: "아인(주)",
+    source: "",
+    text: "플러터 앱 및 Qt 프로그램 개발",
+    period: "2022-02월 ~ 2023-06월(1년 4개월)",
+  ),
   Recommendation(
     name: "로완",
     source: "",
-    text: "의료기기 어플리케이션 개발,",
+    text: "디지털 의료기기 어플리케이션 개발",
     period: "2023-11월 ~ 재직중",
   ),
 ];

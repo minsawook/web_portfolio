@@ -23,9 +23,10 @@ class RecommendationCard extends StatelessWidget {
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Flexible(
+            flex: 1,
             fit: FlexFit.tight,
             // width: MediaQuery.of(context).size.width/0.2,
             child: Text(
@@ -37,19 +38,22 @@ class RecommendationCard extends StatelessWidget {
           ),
           const SizedBox(height: defaultPadding),
           Flexible(
+            flex: 2,
+            fit: FlexFit.tight,
             child: Text(
               recommendation.text!,
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
-              style: TextStyle(height: 1.5),
+              //style: TextStyle(height: 1.5),
             ),
           ),
           Spacer(),
           Text(
             recommendation.period!,
             maxLines: 1,
+            textAlign: TextAlign.center,
             overflow: TextOverflow.ellipsis,
-            style: TextStyle(height: 1.5),
+            // style: TextStyle(height: 1.5),
           )
         ],
       ),

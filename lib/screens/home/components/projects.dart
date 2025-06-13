@@ -1,19 +1,41 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_profile/models/Recommendation.dart';
-import 'package:flutter_profile/screens/home/components/project_card.dart';
-import 'package:flutter_profile/screens/home/components/recommendation_card.dart';
 
 import '../../../constants.dart';
-import '../../../models/Project.dart';
+import '../../../models/Recommendation.dart';
 import 'ProjectsCart.dart';
-import '../../main/components/skills.dart';
-import '../../main/components/coding.dart';
-import '../../../components/animated_section.dart';
 
-class Projects extends StatelessWidget {
-  const Projects({
-    Key? key,
-  }) : super(key: key);
+class Projects extends StatefulWidget {
+  final ScrollController scrollController;
+  const Projects({Key? key, required this.scrollController}) : super(key: key);
+
+  @override
+  State<Projects> createState() => _ProjectsState();
+}
+
+class _ProjectsState extends State<Projects> {
+  late List<bool> _visible;
+
+  @override
+  void initState() {
+    super.initState();
+    _visible = List<bool>.filled(projects.length, false);
+    widget.scrollController.addListener(_onScroll);
+  }
+
+  void _onScroll() {
+    final index = (widget.scrollController.offset / 300).floor();
+    for (int i = 0; i <= index && i < _visible.length; i++) {
+      if (!_visible[i]) {
+        setState(() => _visible[i] = true);
+      }
+    }
+  }
+
+  @override
+  void dispose() {
+    widget.scrollController.removeListener(_onScroll);
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,35 +48,30 @@ class Projects extends StatelessWidget {
             'Projects',
             style: Theme.of(context).textTheme.headlineSmall,
           ),
-          Text(
-            '보유 기술 (Technical Skills)',
-            style: Theme.of(context).textTheme.titleLarge,
-          ),
-          Text(
-            '''
-      Frontend: QT, Flutter
-      Database: SQLite, Firebase
-      Version Control: Git, GitHub
-      Package : GetX, Riverpod, Go Router, Hooks, easy_localization,
-      ''',
-            style: TextStyle(height: 1.5),
-          ),
-          const SizedBox(height: defaultPadding),
-          Skills(),
-          SizedBox(height: defaultPadding),
-          Coding(),
           const SizedBox(height: defaultPadding),
           ListView.builder(
             shrinkWrap: true,
-            physics: NeverScrollableScrollPhysics(),
+            physics: const NeverScrollableScrollPhysics(),
+            itemCount: projects.length,
             itemBuilder: (context, index) {
-              return AnimatedSection(
-                child: ProjectsCard(
-                  recommendation: projects[index],
+              return TweenAnimationBuilder<double>(
+                tween: Tween(begin: 0, end: _visible[index] ? 1 : 0),
+                duration: defaultDuration,
+                builder: (context, value, child) => Opacity(
+                  opacity: value,
+                  child: Transform.translate(
+                    offset: Offset(0, 30 * (1 - value)),
+                    child: child,
+                  ),
+                ),
+                child: Padding(
+                  padding: EdgeInsets.only(bottom: 20),
+                  child: ProjectsCard(
+                    recommendation: projects[index],
+                  ),
                 ),
               );
             },
-            itemCount: projects.length,
           ),
         ],
       ),
