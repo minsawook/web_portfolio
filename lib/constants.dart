@@ -15,8 +15,8 @@ const maxWidth = 1440.0; // max width of our web
 /// Default shadow used on cards to provide separation from the background
 const List<BoxShadow> kDefaultCardShadow = [
   BoxShadow(
-    offset: Offset(0, 4),
-    blurRadius: 12,
-    color: Color(0x1A000000), // 10% opacity black
+    offset: Offset(0, 8),
+    blurRadius: 24,
+    color: Color(0x33000000), // 20% opacity black
   ),
 ];

@@ -6,6 +6,9 @@ import 'package:flutter_profile/screens/home/components/recommendation_card.dart
 import '../../../constants.dart';
 import '../../../models/Project.dart';
 import 'ProjectsCart.dart';
+import '../../main/components/skills.dart';
+import '../../main/components/coding.dart';
+import '../../components/animated_section.dart';
 
 class Projects extends StatelessWidget {
   const Projects({
@@ -17,15 +20,14 @@ class Projects extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: defaultPadding),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "Projects\n",
+            'Projects',
             style: Theme.of(context).textTheme.headlineSmall,
           ),
           Text(
-            "보유 기술 (Technical Skills)\n",
+            '보유 기술 (Technical Skills)',
             style: Theme.of(context).textTheme.titleLarge,
           ),
           Text(
@@ -33,48 +35,27 @@ class Projects extends StatelessWidget {
       Frontend: QT, Flutter
       Database: SQLite, Firebase
       Version Control: Git, GitHub
-      Package : GetX, Riverpod, Go Router, Hooks, easy_localization, 
-          ''',
+      Package : GetX, Riverpod, Go Router, Hooks, easy_localization,
+      ''',
             style: TextStyle(height: 1.5),
           ),
           const SizedBox(height: defaultPadding),
-          SingleChildScrollView(
-              child: ListView.builder(
+          Skills(),
+          SizedBox(height: defaultPadding),
+          Coding(),
+          const SizedBox(height: defaultPadding),
+          ListView.builder(
             shrinkWrap: true,
+            physics: NeverScrollableScrollPhysics(),
             itemBuilder: (context, index) {
-              return ProjectsCard(
-                recommendation: projects[index],
+              return AnimatedSection(
+                child: ProjectsCard(
+                  recommendation: projects[index],
+                ),
               );
             },
             itemCount: projects.length,
-          )
-
-              /*  Column(
-          children: [
-          RecommendationCard(
-          recommendation: demo_recommendations[0],
           ),
-        ],
-      ),
-    )
-    SingleChildScrollView(
-      scrollDirection: Axis.vertical,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-
-        ]  List.generate(
-        demo_recommendations.length,
-            (index) => Padding(
-          padding: const EdgeInsets.only(right: defaultPadding),
-          child: RecommendationCard(
-            recommendation: demo_recommendations[index],
-          ),
-        ),
-      ),
-    ),*/
-              ),
         ],
       ),
     );

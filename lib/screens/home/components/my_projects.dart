@@ -4,6 +4,7 @@ import 'package:flutter_profile/responsive.dart';
 
 import '../../../constants.dart';
 import 'project_card.dart';
+import '../../components/animated_section.dart';
 
 class MyProjects extends StatelessWidget {
   const MyProjects({
@@ -56,8 +57,10 @@ class ProjectsGridView extends StatelessWidget {
         crossAxisSpacing: defaultPadding,
         mainAxisSpacing: defaultPadding,
       ),
-      itemBuilder: (context, index) => ProjectCard(
-        project: demo_projects[index],
+      itemBuilder: (context, index) => AnimatedSection(
+        child: ProjectCard(
+          project: demo_projects[index],
+        ),
       ),
     );
   }
