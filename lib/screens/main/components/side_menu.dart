@@ -11,7 +11,12 @@ import 'skills.dart';
 class SideMenu extends StatelessWidget {
   const SideMenu({
     Key? key,
+    required this.controller,
+    required this.sectionKeys,
   }) : super(key: key);
+
+  final ScrollController controller;
+  final Map<String, GlobalKey> sectionKeys;
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +62,19 @@ class SideMenu extends StatelessWidget {
                         ],
                       ),
                     ),
-                    Skills(),
+                  ...[
+                    _navButton("Home", "home"),
+                    _navButton("About", "about"),
+                    _navButton("Skills", "skills"),
+                    _navButton("Work", "work"),
+                    _navButton("Experience", "experience"),
+                    _navButton("Education", "education"),
+                    _navButton("Blog", "blog"),
+                    _navButton("Contact", "contact"),
+                  ],
+                  Divider(),
+                  SizedBox(height: defaultPadding),
+          Skills(),
                     SizedBox(height: defaultPadding),
                     Coding(),
                     Divider(),
@@ -106,5 +123,20 @@ class SideMenu extends StatelessWidget {
 
   int age(int year) {
     return DateTime.now().year - year;
+  }
+
+  Widget _navButton(String title, String keyName) {
+    return TextButton(
+      onPressed: () {
+        final context = sectionKeys[keyName]?.currentContext;
+        if (context != null) {
+          Scrollable.ensureVisible(context, duration: defaultDuration);
+        }
+      },
+      child: Align(
+        alignment: Alignment.centerLeft,
+        child: Text(title),
+      ),
+    );
   }
 }
