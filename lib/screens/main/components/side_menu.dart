@@ -11,7 +11,10 @@ import 'skills.dart';
 class SideMenu extends StatelessWidget {
   const SideMenu({
     Key? key,
+    this.onMenuTap,
   }) : super(key: key);
+
+  final void Function(String id)? onMenuTap;
 
   @override
   Widget build(BuildContext context) {
@@ -60,6 +63,28 @@ class SideMenu extends StatelessWidget {
                     Skills(),
                     SizedBox(height: defaultPadding),
                     Coding(),
+                    Divider(),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        ListTile(
+                          title: const Text('Career'),
+                          onTap: () => onMenuTap?.call('career'),
+                        ),
+                        ListTile(
+                          title: const Text('Projects'),
+                          onTap: () => onMenuTap?.call('projects'),
+                        ),
+                        ListTile(
+                          title: const Text('Toy Projects'),
+                          onTap: () => onMenuTap?.call('toys'),
+                        ),
+                        ListTile(
+                          title: const Text('Posts'),
+                          onTap: () => onMenuTap?.call('posts'),
+                        ),
+                      ],
+                    ),
                     Divider(),
                     SizedBox(height: defaultPadding / 2),
                     Container(

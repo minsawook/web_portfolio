@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_profile/screens/home/home_screen.dart';
 import 'package:flutter_profile/screens/main/main_screen.dart';
-//import 'package:google_fonts/google_fonts.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'constants.dart';
 
@@ -16,13 +16,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'msw\'s  portfolio',
-      theme: ThemeData.light().copyWith(
+      theme: ThemeData(
         primaryColor: primaryColor,
         scaffoldBackgroundColor: bgColor,
         canvasColor: bgColor,
-        textTheme: ThemeData.light()
-            .textTheme
-            .apply(bodyColor: bodyTextColor, displayColor: bodyTextColor),
+        textTheme: GoogleFonts.notoSansKrTextTheme(
+          ThemeData.light().textTheme,
+        ).apply(bodyColor: bodyTextColor, displayColor: bodyTextColor),
       ),
       home: HomeScreen(),
     );
