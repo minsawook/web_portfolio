@@ -24,7 +24,11 @@ class PostCard extends StatelessWidget {
       },
       child: Container(
         padding: const EdgeInsets.all(defaultPadding),
-        color: secondaryColor,
+        decoration: BoxDecoration(
+          color: secondaryColor,
+          borderRadius: BorderRadius.circular(8),
+          boxShadow: kDefaultCardShadow,
+        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

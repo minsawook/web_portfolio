@@ -9,7 +9,11 @@ class MyInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: secondaryColor,
+      decoration: BoxDecoration(
+        color: secondaryColor,
+        borderRadius: BorderRadius.circular(8),
+        boxShadow: kDefaultCardShadow,
+      ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [

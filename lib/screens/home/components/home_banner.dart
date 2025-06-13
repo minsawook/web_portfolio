@@ -16,7 +16,7 @@ class HomeBanner extends StatelessWidget {
       child: Stack(
         fit: StackFit.expand,
         children: [
-          Container(color: secondaryColor.withOpacity(0.7)),
+          Container(color: darkColor.withOpacity(0.3)),
           Row(mainAxisAlignment: MainAxisAlignment.end, children: <Widget>[
             Image.asset(
               "assets/images/human.png",
