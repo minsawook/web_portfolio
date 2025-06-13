@@ -50,12 +50,15 @@ class MainScreen extends StatelessWidget {
                 flex: 7,
                 child: SingleChildScrollView(
                   controller: scrollController,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      ...children,
-                      // our footer
-                    ],
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 30),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        ...children,
+                        // our footer
+                      ],
+                    ),
                   ),
                 ),
               ),

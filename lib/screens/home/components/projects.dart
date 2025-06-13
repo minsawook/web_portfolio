@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_profile/screens/home/components/project_card.dart';
 
 import '../../../constants.dart';
 import '../../../models/Recommendation.dart';
@@ -65,8 +64,11 @@ class _ProjectsState extends State<Projects> {
                     child: child,
                   ),
                 ),
-                child: ProjectsCard(
-                  recommendation: projects[index],
+                child: Padding(
+                  padding: EdgeInsets.only(bottom: 20),
+                  child: ProjectsCard(
+                    recommendation: projects[index],
+                  ),
                 ),
               );
             },
